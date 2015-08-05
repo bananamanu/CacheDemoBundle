@@ -1,5 +1,36 @@
 {% extends "BananamanuSimpleDesignBundle::pagelayout.html.twig" %}
 
 {% block content %}
-    Test !
+    <div class="row">
+
+        <div {% if ez_is_field_empty( content, 'aside' ) %}class="col-sm-12"{% else %}class="col-sm-8"{% endif %}>
+
+            <h2>{{ ez_render_field( content, 'name') }} (CACHE DEMO)</h2>
+
+            {% if not ez_is_field_empty( content, 'image' ) %}
+                <div>
+                    {{ ez_render_field( content, 'image', { 'parameters': {'alias': 'editoImage'} } ) }}
+                </div>
+            {% endif %}
+
+            {% if not ez_is_field_empty( content, 'introduction' ) %}
+                <blockquote>
+                    {{ ez_render_field( content, 'introduction' ) }}
+                </blockquote>
+            {% endif %}
+
+            {{ ez_render_field( content, 'content') }}
+
+        </div><!-- /.blog-main -->
+
+        {% if not ez_is_field_empty( content, 'aside' ) %}
+            <div class="col-sm-3 col-sm-offset-1">
+                {% set aside = ez_field_value( content, 'aside' ) %}
+                {% for id in aside.destinationContentIds %}
+                    {{ render_esi( controller( 'ez_content:viewContent', {'contentId': id, 'viewType': 'aside'} ) ) }}
+                {% endfor %}
+            </div><!-- /.blog-sidebar -->
+        {% endif %}
+
+    </div><!-- /.row -->
 {% endblock %}

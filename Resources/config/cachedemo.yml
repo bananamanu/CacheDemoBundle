@@ -13,4 +13,4 @@ system:
                     template: "BananamanuCacheDemoBundle:full:edito.html.twig"
                     match:
                         Identifier\ContentType: [edito]
-                        Id\Location: 130
+                        Identifier\Section: cache_demo
