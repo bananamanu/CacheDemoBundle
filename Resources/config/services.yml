@@ -1,0 +1,4 @@
+services:
+#    bananamanu_cache_demo.example:
+#        class: Bananamanu\CacheDemoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

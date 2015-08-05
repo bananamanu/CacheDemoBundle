@@ -1,0 +1,3 @@
+bananamanu_cache_demo_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BananamanuCacheDemoBundle:Default:index }
