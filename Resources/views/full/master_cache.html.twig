@@ -1,0 +1,28 @@
+{% extends "BananamanuSimpleDesignBundle::pagelayout.html.twig" %}
+
+{% block content %}
+
+<h1>{{ ez_render_field( content, 'name') }}</h1>
+
+    <h5>{% trans %}Generated at{% endtrans %} : {{ time|date("H:i:s") }}</h5>
+    {% if not ez_is_field_empty( content, 'introduction' ) %}
+    <div class="well">
+        {{ ez_render_field( content, 'introduction') }}
+    </div>
+    {% endif %}
+
+    <h2>{% trans %}Children display with render_esi{% endtrans %}</h2>
+    <div class="row marketing">
+    {% for location in children %}
+        {{ render_esi( controller( 'ez_content:viewLocation', {'locationId': location.id, 'viewType': 'line'} ) ) }}
+    {% endfor %}
+    </div>
+
+    <h2>{% trans %}Children display with no render_esi{% endtrans %}</h2>
+    <div class="row marketing">
+        {% for location in children %}
+            {{ render( controller( 'ez_content:viewLocation', {'locationId': location.id, 'viewType': 'line'} ) ) }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

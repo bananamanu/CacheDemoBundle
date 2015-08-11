@@ -9,8 +9,30 @@ system:
     ezdemo_frontend_group:
         location_view:
             full:
-                edito:
-                    template: "BananamanuCacheDemoBundle:full:edito.html.twig"
+                master_cache:
+                    controller: BananamanuCacheDemoBundle:Master:viewLocationFull
+                    template: "BananamanuCacheDemoBundle:full:master_cache.html.twig"
+                    match:
+                        Identifier\ContentType: [master]
+                        Identifier\Section: [cache_demo]
+                edito_cache:
+                    controller: BananamanuCacheDemoBundle:Edito:viewLocationFull
+                    template: "BananamanuCacheDemoBundle:full:edito_cache.html.twig"
                     match:
                         Identifier\ContentType: [edito]
-                        Identifier\Section: cache_demo
+                        Identifier\Section: [cache_demo]
+            line:
+                edito_cache:
+                    controller: BananamanuCacheDemoBundle:Edito:viewLocationLine
+                    template: "BananamanuCacheDemoBundle:line:edito_cache.html.twig"
+                    match:
+                        Identifier\ContentType: [edito]
+                        Identifier\Section: [cache_demo]
+        content_view:
+            aside:
+                default_cache:
+                    controller: BananamanuCacheDemoBundle:Main:viewContent
+                    template: "BananamanuCacheDemoBundle:aside:default_cache.html.twig"
+                    match:
+                        Identifier\ContentType: [edito, master]
+                        Identifier\Section: [cache_demo]
