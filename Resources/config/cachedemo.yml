@@ -31,7 +31,7 @@ system:
         content_view:
             aside:
                 default_cache:
-                    controller: BananamanuCacheDemoBundle:Main:viewContent
+                    controller: BananamanuCacheDemoBundle:Aside:viewContent
                     template: "BananamanuCacheDemoBundle:aside:default_cache.html.twig"
                     match:
                         Identifier\ContentType: [edito, master]

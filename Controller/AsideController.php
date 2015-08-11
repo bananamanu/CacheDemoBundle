@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 
-class MainController extends Controller
+class AsideController extends Controller
 {
 
     /**
