@@ -25,7 +25,20 @@
 
         {% if not ez_is_field_empty( content, 'aside' ) %}
             <div class="col-sm-3 col-sm-offset-1">
-                {% set aside = ez_field_value( content, 'aside' ) %}
+
+                <div class="sidebar-module well">
+
+                    {# Render user related content for demo with esi tags #}
+                    <h4>{% trans %}User info with render_esi{% endtrans %}</h4>
+                    {{ render_esi( controller( 'BananamanuCacheDemoBundle:Aside:viewUserInfo' ) ) }}
+
+                    {# Render user related content for demo #}
+                    <h4>{% trans %}User info{% endtrans %}</h4>
+                    {{ render( controller( 'BananamanuCacheDemoBundle:Aside:viewUserInfo') ) }}
+
+                </div>
+
+                {% set aside = ez_field_value(content, 'aside') %}
                 {% for id in aside.destinationContentIds %}
                     {{ render_esi( controller( 'ez_content:viewContent', {'contentId': id, 'viewType': 'aside'} ) ) }}
                 {% endfor %}

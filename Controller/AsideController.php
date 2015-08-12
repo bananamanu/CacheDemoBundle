@@ -31,4 +31,25 @@ class AsideController extends Controller
         return $response;
     }
 
+    /**
+     * Renders aside content regarding current user
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewUserInfoAction()
+    {
+        $user = $this->getRepository()->getCurrentUser();
+        $response = new Response();
+        $response->setVary('X-User-Hash');
+        $response->setSharedMaxAge(300);
+        $response->setPublic();
+
+        $params = array();
+        $params['time'] = time();
+        $params['user'] = $user;
+
+        return $this->render('BananamanuCacheDemoBundle:aside:user_info.html.twig', $params, $response);
+
+    }
+
 }
